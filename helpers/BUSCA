@@ -1,0 +1,75 @@
+
+
+DIRECCIONES 
+DIRECCIONES = [
+    {
+        refrendos: [ 0, 1 ],
+        direccion: {
+        estado: 'CIUDAD DE MEXICO',
+        entidad_local: 'BENITO JUAREZ, MEXICO, D.F.,',
+        colonia: 'DEL VALLE,',
+        codigo_postal: '03100',
+        calle: 'GABRIEL MANCERA # 1228,'
+        },
+        insertar: 'completo',
+        id: 456
+    },
+    {
+        refrendos: [ 2, 3, 4 ],
+        direccion: {
+        estado: 'CIUDAD DE MEXICO',
+        entidad_local: 'BENITO JUAREZ, ,',
+        colonia: 'DEL VALLE,',
+        codigo_postal: '03100',
+        calle: 'MATIAS ROMERO # 116,'
+        },
+        insertar: 'intermedia',
+        id: 453
+    }
+]
+
+
+
+
+
+
+
+REPRESENTANTES!!!!
+RESULTADO  :  [
+    {
+      refrendos: [ 0, 1, 2, 3, 4 ],
+      representante: {
+        tipo_representante: 'legal',
+        nombre: 'ROSA ERIKA ESPINOSA DE LOS MONTEROS FRANCO'
+      },
+      insertar: 'intermedia',
+      id: 709
+    },
+    {
+      refrendos: [ 0 ],
+      representante: {
+        tipo_representante: 'legal',
+        nombre: 'SUSANA ALEJANDRA BAZAN MORALES'
+      },
+      insertar: 'completo',
+      id: 711
+    },
+    {
+      refrendos: [ 1, 2, 3, 4 ],
+      representante: {
+        tipo_representante: 'legal',
+        nombre: 'RICARDO ESPINOSA DE LOS MONTEROS URUEÑA'
+      },
+      insertar: 'intermedia',
+      id: 710
+    }
+  ]
+
+
+
+  [FromKeyedServices("randomSingleton")] IRandomServices randomServiceSingleton,
+[FromKeyedServices("randomScoped")] IRandomServices randomServiceScoped,
+[FromKeyedServices("randomTransient")] IRandomServices randomServiceTransient,
+[FromKeyedServices("randomSingleton")] IRandomServices randomService2Singleton,
+[FromKeyedServices("randomScoped")] IRandomServices randomService2Scoped,
+[FromKeyedServices("randomTransient")] IRandomServices randomService2Transient)

@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app  # Montar volumen para la aplicación
+    container_name: node-proveedores
+    networks:
+      - proveedores-network  # Nombre de la red Docker
+
+networks:
+  proveedores-network:
+    external: true  # Indica que la red ya existe
+
+# EJECUTAR CON docker exec -it node-proveedores bash
+# para entrar en la terminal     

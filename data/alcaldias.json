@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "alcaldia": "Álvaro Obregón"
+    },
+    {
+        "id": 2,
+        "alcaldia": "Azcapotzalco"
+    },
+    {
+        "id": 3,
+        "alcaldia": "Benito Juárez"
+    },
+    {
+        "id": 4,
+        "alcaldia": "Coyoacán"
+    },
+    {
+        "id": 5,
+        "alcaldia": "Cuajimalpa de Morelos"
+    },
+    {
+        "id": 6,
+        "alcaldia": "Cuauhtémoc"
+    },
+    {
+        "id": 7,
+        "alcaldia": "Gustavo A. Madero"
+    },
+    {
+        "id": 8,
+        "alcaldia": "Iztacalco"
+    },
+    {
+        "id": 9,
+        "alcaldia": "Iztapalapa"
+    },
+    {
+        "id": 10,
+        "alcaldia": "La Magdalena Contreras"
+    },
+    {
+        "id": 11,
+        "alcaldia": "Miguel Hidalgo"
+    },
+    {
+        "id": 12,
+        "alcaldia": "Milpa Alta"
+    },
+    {
+        "id": 13,
+        "alcaldia": "Tláhuac"
+    },
+    {
+        "id": 14,
+        "alcaldia": "Tlalpan"
+    },
+    {
+        "id": 15,
+        "alcaldia": "Venustiano Carranza"
+    },
+    {
+        "id": 16,
+        "alcaldia": "Xochimilco"
+    }
+]
