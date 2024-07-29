@@ -1,0 +1,58 @@
+# Proceso de Migración de Datos
+
+## Instrucciones
+
+### Paso 1: Validar las Conexiones a la Base de Datos
+
+Antes de iniciar la migración, es importante validar que las conexiones a la base de datos están funcionando correctamente.
+
+### Paso 2: Ejecutar la Migración
+
+Para iniciar la migración, ejecuta el siguiente comando en la terminal:
+
+```bash
+node migracionSS
+
+# Si Ocurre un Error y el Proceso se Interrumpe
+
+En caso de que se presente un error durante el proceso de migración y este se interrumpa, sigue los siguientes pasos:
+
+## Paso 1: Eliminar los Proveedores Afectados
+
+### Obtener los Números de Proveedor a Eliminar
+- Identifica los números de los proveedores que fueron afectados por el error.
+
+### Actualizar el Archivo "eliminaProveedores"
+1. Abre el archivo `eliminaProveedores.js`.
+2. Inserta los números de los proveedores afectados en el arreglo correspondiente. Por ejemplo:
+    ```javascript
+    const proveedoresAEliminar = [1234, 5678, 91011]; // Proveedores afectados
+    ```
+
+### Ejecutar el Comando para Eliminar Proveedores
+- Ejecuta el siguiente comando en la terminal para eliminar los proveedores afectados:
+    ```bash
+    node eliminaProveedores
+    ```
+
+## Paso 2: Continuar con la Migración
+
+### Actualizar el Archivo "migracionSS"
+1. En el archivo `migracionSS.js`, actualiza la función `getProveedoresConcatenados` para incluir el número de proveedor desde el que deseas continuar. Por ejemplo:
+    ```javascript
+    const getProveedoresConcatenados = async () => {
+        // ...
+        const result = await request.query(`
+            SELECT ...
+            WHERE cp.num_prove > 4025
+            ...
+        `);
+        // ...
+    };
+    ```
+
+### Ejecutar la Migración Nuevamente
+- Ejecuta el siguiente comando en la terminal para continuar con la migración desde el punto especificado:
+    ```bash
+    node migracionSS
+    ```

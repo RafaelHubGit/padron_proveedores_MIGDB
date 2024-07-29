@@ -120,6 +120,7 @@ async function startMigration () {
 
 
 
+        
         // AQUI EMPIZA TODO LO DE D_PROVE
 
         const D_PROVES = await getD_prove( proveedor.num_prove );

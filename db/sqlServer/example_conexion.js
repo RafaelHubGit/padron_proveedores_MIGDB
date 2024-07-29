@@ -3,11 +3,10 @@ const sql = require('mssql');
 
 // Crear una conexión a la base de datos
 const config = {
-  // server: '10.68.2.200',
   server: 'proveedores_new_db_sqlServer',
   port: 1433,
   user: 'sa',
-  password: 'contraseña_segura2024',
+  password: 'pass',
   database: 'master',
   options: {
     enableArithAbort: true,

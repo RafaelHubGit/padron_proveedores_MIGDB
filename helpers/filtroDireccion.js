@@ -12,11 +12,11 @@ function returnDireccionJson ( direccion ) {
     const calleC = cpC.direccion;
 
     return {
-        "estado": estadoC.estado,
-        "entidad_local": entidadLoc.entidad,
-        "colonia": coloniaC.colonia, 
-        "codigo_postal": (/^\d+$/).test(cpC.cp) ? cpC.cp : 0, 
-        "calle": calleC
+        "Estado": estadoC.estado,
+        "EntidadLocal": entidadLoc.entidad,
+        "Colonia": coloniaC.colonia, 
+        "CodigoPostal": (/^\d+$/).test(cpC.cp) ? cpC.cp : 0, 
+        "Calle": calleC
     }
 }
 
@@ -34,7 +34,10 @@ function estados ( direccion ) {
 
         const regexCol = /(?<=(\sCOLONIA|\sCOL(\s|\.|,)|\sFRACCIONAMIENTO)).*/gim;
         const estadoFilt = estado.match( regexCol );
-        return direccion.toUpperCase().includes( estadoFilt ) 
+
+        console.log("Direccion  : ", direccion );
+
+        return direccion?.toUpperCase().includes( estadoFilt ) 
     
         }) || "CIUDAD DE MEXICO";
 

@@ -1,24 +1,35 @@
 // const db_new = require('./db/mysql/connection_database_new');
-const db_new = require('./db/sqlServer/connection_database_new');
+// const db_new = require('./db/sqlServer/connection_database_new');
+
+const { pool } = require('mssql');
+require('dotenv').config();
+const createPool = require('./db/sqlServer/connectionSqlServerMig');
+
+const port = parseInt(process.env.PORT_NEW, 10);
+const dbHost = process.env.DB_HOST_NEW;
+const dbUser = process.env.DB_USER_NEW;
+const dbPass = process.env.DB_PASS_NEW;
+
+
+
+const poolMig = createPool(dbHost, port, dbUser, dbPass, 'PadronProveedores');
 
 // Debido a que la info se va a recibir como json, se puede crear un insert generico en lugar de uno por uno
 async function insertGeneric ( data, idName, tableName ) {
     try {
 
-        // const columns = Object.keys( data ).join(', ');
-        // const placeholders = Object.keys( data ).fill('?').join(', ');
-        // const values = Object.values( data );
-        //const sql = `INSERT INTO ${tableName} (${columns}) VALUES (${placeholders})`;
+        await poolMig.connect();
+        const request = poolMig.request();
 
         const columns = Object.keys(data).join(', ');
         const placeholders = Object.keys(data).map((key, index) => `@param${index}`).join(', ');
         const values = Object.values(data);
 
         // Obtener una conexión del pool
-        const poolConnection = await db_new.connect();
+        //const poolConnection = await db_new.connect();
 
         // Crear una solicitud a partir de la conexión del pool
-        const request = poolConnection.request();
+        //const request = poolConnection.request();
 
         // Construir la consulta SQL con parámetros
         // const query = `INSERT INTO proveedores.${tableName} (${columns}) VALUES (${placeholders})`;
@@ -27,8 +38,11 @@ async function insertGeneric ( data, idName, tableName ) {
 
         // Asignar valores a los parámetros
         Object.keys(data).forEach((key, index) => {
+            console.log(`Asignando valor ${values[index]} al parámetro @param${index}`);
             request.input(`param${index}`, values[index]);
         });
+
+        console.log('Ejecutando la siguiente consulta SQL:' , query);
 
         // Ejecutar la consulta
         const result = await request.query(query);
@@ -46,7 +60,9 @@ async function insertGeneric ( data, idName, tableName ) {
         throw error;
     } finally {
         // Cerrar la conexión al pool de conexiones
-        await db_new.close();
+        if ( poolMig ){
+            await poolMig.close();
+        }
     }
 }
 

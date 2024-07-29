@@ -1,0 +1,7 @@
+
+NOTA! Verificar que todo se hara con puro sqlserver 
+
+1. Se va a usar como fuente de informacion la bd de sqlserver con los datos obtenidos de informix 
+2. Crear un json con bloques de 300 (por ejemplo) en el cual traiga toda la informacion de la bd para no hacer tantas 
+solicitudes a la base de datos 
+3. cambiar los inserts por las nuevas tablas 
